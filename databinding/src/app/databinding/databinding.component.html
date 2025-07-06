@@ -1,0 +1,51 @@
+
+  <div class="container mt-5">
+    <h2 class="mb-4">One Way Data binding - from .ts to .html</h2>
+     <div class="row">
+        <div class="col-4">
+            <div class="row">
+              <div class="col-4 bg-success">
+                <h2>interpolation</h2>
+              <h4>{{CourseName}}</h4>
+              <div>{{inputType}}</div>
+              <input type="text" value="{{CourseName}}" placeholder="Enter text">
+              <input type="{{inputType}}"/>
+            </div>
+            </div>
+        </div>
+     </div>
+  </div>
+  ------------------------
+  <div class="col-4">
+      <h2>Property binding</h2>
+      <div [class]="myClassName"> Danger</div>
+      <input type="text" [placeholder]="CourseName"/><br/>
+      <input [type]="inputType"/>
+  </div>
+  <div class="col-4">
+    <button class="btn btn-success" (click)="ShowAlert('Welcome Angular 18')"> Show Welcome</button>
+    <span (click)="ShowAlert('This is Show Span')">Click on </span>
+    <button class="btn btn-success" (click)="changeCourseName();">Change Course</button>
+</div>
+
+  ----------------------
+<div>
+    <div>
+    </div>
+    <div class="col-6">
+        <input type="text" [(ngModel)]="CourseName"/> -{{CourseName}}<br/>
+        <input type="checkbox" [(ngModel)]="isIndian"/> {{isIndian}}
+        <br/>
+        <select [(ngModel)]="StateName">
+            <option value="">Select</option>
+            <option value="Maharashtra">Maharashtra</option>
+            <option value="GOA">GOA</option>
+            <Option value="Punjab">Punjab</Option>
+        </select>
+
+    </div>
+    <br/>
+    <div class="col-6">
+       <h1>{{FullName()}}</h1>
+    </div>
+</div>
