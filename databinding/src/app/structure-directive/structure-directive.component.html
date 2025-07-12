@@ -1,0 +1,108 @@
+<div class="bg-secondary text-white p-3">
+    <h2>*ngIf, *ngFor...</h2>
+  </div>
+  
+  <div class="row pt-3">
+    <div class="col-3">
+      <div *ngIf="isDiv1Visible" class="bg-danger p-3 text-center">
+        <h4>Div-1</h4>
+      </div>
+    </div>
+    <div class="col-3">
+      <div *ngIf="isDiv2Visible" class="bg-success p-3 text-center">
+        <h4>Div-2</h4>
+      </div>
+    </div>
+    <div class="col-3">
+      <div *ngIf="num1==num2" class="bg-danger p-3 text-center">
+        <h4>Div-3</h4>
+      </div>
+    </div>
+    <div class="col-3">
+      <div *ngIf="isDiv3Divible=='India'" class="bg-success p-3 text-center">
+        <h4>Div-4</h4>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row pt-3">
+    <div class="col-3 text-center">
+      <button class="btn btn-danger" (click)="hideDiv1()">Hide</button>
+      <button class="btn btn-primary mx-2" (click)="showDiv1()">Show</button>
+    </div>
+    <div class="col-3 text-center">
+      <button class="btn btn-success" (click)="toggleDiv2()">Toggle Div-2</button>
+    </div>
+    <div class="col-3">
+        <div style="display: flex;align-items:center;">
+          <input type="text" [(ngModel)]="num1" placeholder="Num-1">
+          <input type="text" [(ngModel)]="num2" placeholder="Num2">
+        </div>
+    </div>
+    <div class="col-3 text-center">
+        <div class="d-flex flex-column align-items-center gap-2">
+          <input type="checkbox" class="form-check-input">
+          <select [(ngModel)]="isDiv3Divible" class="form-select w-75 text-center">
+            <option value="">Select State</option>
+            <option value="India">India</option>
+            <option value="USA">USA</option>
+            <option value="Shrilanka">Shrilanka</option>
+          </select>
+        </div>
+      </div>
+      
+  </div>
+  <div class="row pt-3">
+    <div class="col-3">
+      <ul>
+         <li *ngFor="let city of cityArray">{{city}}</li>
+      </ul>
+    </div>
+    <div class="col-3">
+        <ul>
+            <select class="form-select w-75 text-center">
+                <option *ngFor="let city of cityArray">{{city}}</option>
+            
+            </select>
+        </ul>
+      </div>
+      <div class="col-3">
+        <ul>
+    
+        </ul>
+      </div>
+  </div>
+
+  <div class="row">
+     <div class="col-5">
+        <table class="table table-bordered">
+<thead>
+    <tr>
+        <th>
+            Sr No
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            City
+        </th>
+        <th>
+            Status
+        </th>
+    </tr>
+</thead>
+<tbody>
+    <tr *ngFor="let student of studentList;let srNo = index">
+        <td>{{srNo+1}}</td>
+        <td>{{student.name}}</td>
+        <td>{{student.city}}</td>
+        <td>
+            <span *ngIf="student.isActive">Active</span>
+            <span *ngIf="!student.isActive">InActive</span>
+        </td>
+    </tr>
+</tbody>
+        </table>
+     </div>
+  </div>
