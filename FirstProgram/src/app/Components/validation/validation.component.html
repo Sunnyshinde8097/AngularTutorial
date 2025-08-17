@@ -1,0 +1,147 @@
+<h1>Validation Form</h1>
+<div>
+  <div>
+    <form class="row g-3 needs-validation" novalidate>
+      <div class="col-md-4">
+        <label for="validationCustom01" class="form-label">First name</label>
+        <input
+          type="text" #fname="ngModel"
+          class="form-control"
+          id="validationCustom01"
+          name="firstName"
+          [(ngModel)]="studentObj.firstName"
+          minlength="3"
+          required
+        />
+        <div class="text-danger">
+          @if((fname.touched||fname.dirty)&& fname.errors?.['required'])
+          {
+             <span>This is Required</span>
+          }
+          @else if((fname.touched||fname.dirty)&& fname.errors?.['minlength'])
+          {
+            <span>Min 3 Char Required</span>
+          }
+        </div>
+      </div>
+      <div class="col-md-4">
+        <label for="validationCustom02" class="form-label">Last name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="validationCustom02"
+          name="lastName" #fname1="ngModel"
+          [(ngModel)]="studentObj.lastName" minlength="3"
+          required
+        />
+        <div class="text-danger">
+          @if((fname1.touched||fname1.dirty)&& fname1.errors?.['required'])
+          {
+             <span>This is Required</span>
+          }
+          @else if((fname1.touched||fname1.dirty)&& fname1.errors?.['minlength'])
+          {
+            <span>Min 3 Char Required</span>
+          }
+        </div>
+      </div>  
+      <div class="col-md-4">
+        <label for="validationCustomUsername" class="form-label">Username</label>
+        <div class="input-group has-validation">
+          <input
+            type="text"
+            class="form-control"
+            id="validationCustomUsername"
+            name="Username" #fname2="ngModel"
+            [(ngModel)]="studentObj.Username"
+            aria-describedby="inputGroupPrepend"
+            minlength="3"
+            pattern="^[0-9]+$"
+            required
+          />
+          <div class="text-danger">
+            <span *ngIf="(fname2.touched || fname2.dirty) && fname2.errors?.['required']">
+              This is Required
+            </span>
+            <span *ngIf="(fname2.touched || fname2.dirty) && fname2.errors?.['minlength']">
+              Min 10 Characters Required
+            </span>
+            <span *ngIf="(fname2.touched || fname2.dirty) && fname2.errors?.['pattern']">
+              Only Numeric Characters Allowed
+            </span>
+          </div>
+      
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label for="validationCustom03" class="form-label">City</label>
+        <input
+          type="text"
+          class="form-control"
+          id="validationCustom03"
+          name="City" #fname3="ngModel"
+          [(ngModel)]="studentObj.City"
+          required
+        />
+        <div class="text-danger">
+          <span *ngIf="(fname3.touched || fname3.dirty) && fname3.errors?.['required']">
+            This is Required
+          </span>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <label for="validationCustom04" class="form-label">State</label>
+        <select
+        class="form-select"
+        id="validationCustom04"
+        name="state"
+        [(ngModel)]="studentObj.state"
+        #stateRef="ngModel"
+        required
+      >
+        <option selected disabled value="">Choose State</option>
+        <option>Maharashtra</option>
+        <option>Goa</option>
+        <option>Punjab</option>
+      </select>
+      <div class="text-danger mt-1">
+        <span *ngIf="(stateRef.touched || stateRef.dirty) && stateRef.errors?.['required']">
+          Please select a state
+        </span>
+      </div>
+        
+      </div>
+    
+      <div class="col-md-3">
+        <label for="validationCustom05" class="form-label">Zip</label>
+        <input
+          type="text"
+          class="form-control"
+          id="validationCustom05"
+          name="Zip" #fname4="ngModel"
+          [(ngModel)]="studentObj.Zip"
+          minlength="6"
+          pattern="^[0-9]+$"
+          required
+        />
+        <div class="text-danger">
+          <span *ngIf="(fname4.touched || fname4.dirty) && fname4.errors?.['required']">
+            This is Required
+          </span>
+          <span *ngIf="(fname4.touched || fname4.dirty) && fname2.errors?.['minlength']">
+            Min 6 Characters Required
+          </span>
+          <span *ngIf="(fname4.touched || fname4.dirty) && fname4.errors?.['pattern']">
+            Only Numeric Characters Allowed
+          </span>
+        </div>
+      </div>
+      <div class="col-12">
+        <button class="btn btn-primary" type="submit" (click)="onSubmit()">Submit form</button>
+      </div>
+    </form>
+  </div>
+  <div>
+    {{formValue|json}}
+  </div>
+</div>
